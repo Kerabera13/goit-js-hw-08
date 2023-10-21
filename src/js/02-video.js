@@ -12,19 +12,18 @@ player.on('timeupdate', function(data) {
 const savedTime = localStorage.getItem('videoplayer-current-time');
 
 if (savedTime !== null) {
-  // Встановіть час відтворення плеєра зі збереженої позиції
+
   player.setCurrentTime(parseFloat(savedTime)).then(function(seconds) {
-    // seconds - фактичний час, до якого було змінено відтворення
+    
     console.log('Час відтворення відновлено до', seconds);
   }).catch(function(error) {
     switch (error.name) {
       case 'RangeError':
-        // Час був менше 0 або більше тривалості відео
+        
         console.error('Помилка встановлення часу відтворення:', error);
         break;
 
       default:
-        // Відбулася якась інша помилка
         console.error('Помилка встановлення часу відтворення:', error);
         break;
     }
